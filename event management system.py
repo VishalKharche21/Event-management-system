@@ -67,8 +67,8 @@ def getvalues():
     val=(cname,caddress,cmobileno,cfsd,cfed,clocation)
     mydata.execute(sql,val)
     mydata.execute("commit")
-    popup()    
-    mydb.close();
+    popup()
+    mydb.close()
 
 def popup():
     global pop
@@ -76,6 +76,15 @@ def popup():
     pop.geometry('180x120')
     Label(pop, text="Insert Sucessfully").pack()
     Button(pop, text="OK",cursor='hand2', command=exit3).pack()
+
+def reset_data():
+    entryname.delete(0,END)
+    entryaddress.delete(0,END)
+    entrymobileno.delete(0,END)
+    entryfunctionsd.delete(0,END)
+    entryfunctioned.delete(0,END)
+    entrylocation.delete(0,END)
+    
 
 def afterdata():
     
@@ -106,12 +115,21 @@ def afterdata():
     global userfunctioned
     global userfunctionsd
     global userlocation
+    
     username=StringVar()
     useraddress=StringVar()
     usermobileno=StringVar()
     userfunctioned=StringVar()
     userfunctionsd=StringVar()
     userlocation=StringVar()
+
+    global entryname
+    global entryaddress
+    global entrymobileno
+    global entryfunctionsd
+    global entryfunctioned
+    global entrylocation
+
 
     entryname=Entry(f1,textvariable=username,bg='gray86')
     entryname.place(x=320,y=60,width=250,height=25)
@@ -128,8 +146,9 @@ def afterdata():
 
 
     Button(f1,text='Submit',cursor='hand2',bg='coral',fg='white',command=getvalues).place(x=320,y=300,width=100,height=25)
-    Button(f1,text='Exit',cursor='hand2',bg='coral',fg='white',command=exit1).place(x=320,y=340,width=100,height=25)
-   
+    Button(f1,text='Exit',cursor='hand2',bg='coral',fg='white',command=exit1).place(x=370,y=340,width=100,height=25)
+    Button(f1,text='Reset',cursor='hand2',bg='coral',fg='white',command=reset_data).place(x=420,y=300,width=100,height=25)
+    
     loginscreen.mainloop()
 
 
